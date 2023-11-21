@@ -4,3 +4,30 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+.main-div-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
+}
+.login-container {
+    /* border: 2px solid #3deaff; */
+    padding: 40px;
+    width: 350px;
+    box-sizing: border-box;
+}
+.home-main-div{
+    height: 100vh;
+    margin: 0;
+
+}
+.user-input{
+    text-transform: capitalize;
+}
+.todo-container {
+    /* border: 2px solid #3deaff; */
+    padding: 40px;
+    width: 500px;
+    box-sizing: border-box;
+}

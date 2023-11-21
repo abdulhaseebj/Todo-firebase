@@ -19,9 +19,10 @@ onAuthStateChanged(auth, async (user) => {
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             console.log(doc.data());
-            userRen.innerHTML = `WellCome ${doc.data().name}`
+            userRen.innerHTML = `${doc.data().name}`
         });
         getDataFromFirestore(uid);
+        renderPost()
     } else {
         window.location = 'index.html'
     }
@@ -44,6 +45,7 @@ logout.addEventListener('click', () => {
 // add data on firstore
 form.addEventListener('submit', async (e) => {
     e.preventDefault()
+
     console.log(input.value);
     try {
         const docRef = await addDoc(collection(db, "todo"), {
@@ -51,6 +53,7 @@ form.addEventListener('submit', async (e) => {
             todo: input.value,
         });
         console.log("Document written with ID: ", docRef.id);
+        input.value = ''
     } catch (e) {
         console.error("Error adding document: ", e);
     }
@@ -107,10 +110,14 @@ function renderPost() {
     render.innerHTML = ''
     arr.map((item) => {
         render.innerHTML += `
-        <div>
+        <div class='flex justify-between mt-6'>
             <ul>
                 <li>${item.todo}</li>
              </ul>
+             <div class='flex justify-center gap-1'>
+             <button type="button" id="delete" class="btn btn-danger">Delete</button>
+                <button type="button" id="update" class="btn btn-info">Edit</button>
+             </div>
          </div>
         `
     })

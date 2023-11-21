@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    <!-- css link 1st -->
     <link rel="stylesheet" href="./dist/style.css">
+    <!-- css link 2nd -->
     <link rel="stylesheet" href="style.css">
+    <!-- Deasi ui link -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -17,25 +21,34 @@
 <body>
     <div>
         <!-- navbar area start -->
-        <div class="navbar bg-[#3deaff] text-white">
-            <h3 class=" text-2xl font-medium">LogIn</h3>
+        <div class="navbar bg-[#80daff] text-white">
+            <h3 class=" text-2xl font-medium ">LogIn</h3>
         </div>
         <!-- navbar area end -->
-        <div class="border-solid border-2 border-[#3deaff] py-[100px] px-96">
-            <h1>login</h1>
-            <form class="form">
-                <input type="email" placeholder="Email" class="email"><br>
-                <input type="password" placeholder="Password" class="password"><br>
-                <button type="submit">Login</button>
-            </form>
+
+        <!-- login area start -->
+        <div class="main-div-login bg-[#e7ebee]">
+            <div class="login-container bg-white rounded-2xl">
+                <h1 class="text-center text-3xl pt-3 font-mono">LogIn</h1>
+                <form class="form">
+                    <input type="email" placeholder="Enter your email"
+                        class="email input input-bordered input-info w-full max-w-xs mt-6" />
+                    <input type="password" placeholder="Enter Password"
+                        class="password input input-bordered input-info w-full max-w-xs mt-3" />
+                    <div class="flex justify-center">
+                        <button
+                            class="mt-6 bg-[#80daff] px-10 py-2 font-black rounded-md text-white mb-9 text-center ">Login</button>
+                    </div>
+                    <div class="text-center">
+                        <p>Dont Have an acount? <a href="./signup.html" class="text-[#80daff]">SignUp</a> </p>
+                    </div>
+                </form>
+            </div>
         </div>
-
-
-
-
-        <a href="./signup.html">register</a>
     </div>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!-- login area end -->
+
+    <!-- javascript link -->
     <script type="module" src="app.js"></script>
 </body>
 

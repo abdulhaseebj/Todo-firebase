@@ -5,22 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
+    <!-- css link 1st -->
+    <link rel="stylesheet" href="./dist/style.css">
+    <!-- css link 2nd -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Deasi ui link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <div>
-        <h1>home</h1>
-        <button class="logout">Logout</button>
-    </div>
-    <div class="user-ren"></div>
+    <!-- main-div -->
+    <div class="bg-[#e7ebee] home-main-div">
+        <!-- navbar area start -->
+        <div class="navbar bg-[#80daff]">
+            <div class="flex-1 text-white ml-5 ">
+                <h2 class="text-xl font-semibold">TODO LIST</h2>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal px-1">
+                    <li>
+                        <details>
+                            <summary class="mr-5 text-white">
+                                <div class="user-ren text-xl ">
 
-    <form class="form">
-        <input type="text" placeholder="Enter your todo" class="todo-inp">
-        <button type="submit">Add</button>
-    </form>
-    <div class="render">
-        
+                                </div>
+
+                            </summary>
+                            <ul class="p-2 bg-base-100 ">
+                                <button class="logout">Logout</button>
+
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- navbar area end -->
+
+        <!-- todo form start -->
+        <div class=" flex justify-center mt-6">
+            <div class="todo-container bg-white rounded-2xl">
+                <form class="form ">
+                    <h2 class="text-center text-2xl">Add Todo</h2>
+                    <div class="flex justify-center items-center mt-4 gap-1">
+                        <div>
+                            <input type="text" placeholder="Enter your todo"
+                                class="todo-inp py-2 input input-bordered input-info w-full max-w-xs " />
+                        </div>
+                        <div>
+                            <button
+                                class=" bg-[#80daff] px-6 py-3 font-black rounded-md text-white text-center ">Add</button>
+                        </div>
+                    </div>
+
+                </form>
+                <!-- todo rendring area start -->
+                <div class="render">
+
+                </div>
+                <!-- todo rendring area end -->
+            </div>
+        </div>
+        <!-- todo form end -->
     </div>
+    <!-- javascript area start -->
     <script type="module" src="home.js"></script>
 </body>
 
