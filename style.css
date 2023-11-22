@@ -7,9 +7,10 @@
 .main-div-login{
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 90vh;
-    margin: 0;
+    margin-top: 40px;
+    /* align-items: center; */
+    /* height: 100vh; */
+    /* margin: 0; */
 }
 .login-container {
     /* border: 2px solid #3deaff; */

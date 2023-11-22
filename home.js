@@ -22,7 +22,6 @@ onAuthStateChanged(auth, async (user) => {
             userRen.innerHTML = `${doc.data().name}`
         });
         getDataFromFirestore(uid);
-        renderPost()
     } else {
         window.location = 'index.html'
     }
@@ -42,78 +41,17 @@ logout.addEventListener('click', () => {
 
 })
 
-// add data on firstore
-form.addEventListener('submit', async (e) => {
-    e.preventDefault()
-
-    console.log(input.value);
-    try {
-        const docRef = await addDoc(collection(db, "todo"), {
-            uid: auth.currentUser.uid,
-            todo: input.value,
-        });
-        console.log("Document written with ID: ", docRef.id);
-        input.value = ''
-    } catch (e) {
-        console.error("Error adding document: ", e);
-    }
-})
-// get data from firestore
-// let arr = []
-
-// function renderData() {
-//     render.innerHTML = ''
-//     arr.map((item) => {
-//         render.innerHTML += `
-//         <ul>
-//         <li>${item.todo}</li>
-//         <button type="button" id="delete" class="btn btn-danger">Delete</button>
-//         <button type="button" id="update" class="btn btn-info">Edit</button>
-//         </ul>
-//         `
-//     })
-
-//     const del = document.querySelectorAll('#delete');
-//     const upd = document.querySelectorAll('#update');
-
-//     del.forEach((btn, index) => {
-//         btn.addEventListener('click', async () => {
-//             console.log('del');
-//             await deleteDoc(doc(db, "todo", arr[index].docId))
-//                 .then(() => {
-//                     console.log('post deleted');
-//                     arr.splice(index, 1);
-//                     renderPost()
-//                 });
-//         })
-//     })
-
-//     upd.forEach((btn, index) => {
-//         btn.addEventListener('click', async () => {
-//             console.log('update called', arr[index]);
-//             const updatedTitle = prompt('enter new Title');
-//             await updateDoc(doc(db, "todo", arr[index].docId), {
-//                 title: updatedTitle
-//             });
-//             arr[index].title = updatedTitle;
-//             renderPost()
-
-//         })
-//     })
+// render data from firebase
 
 
-// }
-
-let arr = [];
+const arr = [];
 
 function renderPost() {
     render.innerHTML = ''
     arr.map((item) => {
         render.innerHTML += `
-        <div class='flex justify-between mt-6'>
-            <ul>
+        <div class='flex justify-between mt-6 items-center'>
                 <li>${item.todo}</li>
-             </ul>
              <div class='flex justify-center gap-1'>
              <button type="button" id="delete" class="btn btn-danger">Delete</button>
                 <button type="button" id="update" class="btn btn-info">Edit</button>
@@ -150,6 +88,8 @@ function renderPost() {
     })
 }
 
+// get data from firestore
+
 async function getDataFromFirestore(uid) {
     arr.length = 0
     const q = query(collection(db, "todo"), where("uid", "==", uid));
@@ -159,14 +99,46 @@ async function getDataFromFirestore(uid) {
         // arr.push(doc.data())
         arr.push({ ...doc.data(), docId: doc.id });
     });
-    console.log(arr);
     renderPost()
-
 }
 
+// add data on Firestore
+// form.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+//     console.log(input.value);
+//     try {
+//         const docRef = await addDoc(collection(db, "todo"), {
+//             uid: auth.currentUser.uid,
+//             todo: input.value,
+//         });
+//         console.log("Document written with ID: ", docRef.id);
 
+//         // Update local array and render after adding data
+//         arr.push({ uid: auth.currentUser.uid, todo: input.value, docId: docRef.id });
+//         renderPost();
 
+//     } catch (e) {
+//         console.error("Error adding document: ", e);
+//     }
+//     input.value = '';
+// });
 
+// add data on firstore
 
+form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    console.log(input.value);
+    try {
+        const docRef = await addDoc(collection(db, "todo"), {
+            uid: auth.currentUser.uid,
+            todo: input.value,
+        });
+        console.log("Document written with ID: ", docRef.id);
+        arr.push({ uid: auth.currentUser.uid, todo: input.value, docId: docRef.id });
+        renderPost()
 
-
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+    input.value = ''
+});
