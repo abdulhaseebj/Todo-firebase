@@ -566,22 +566,6 @@ video {
   width: 100%;
 }
 
-.w-\[\] {
-  width: ;
-}
-
-.w-\[20px\] {
-  width: 20px;
-}
-
-.w-\[25px\] {
-  width: 25px;
-}
-
-.w-6 {
-  width: 1.5rem;
-}
-
 .max-w-xs {
   max-width: 20rem;
 }
@@ -616,14 +600,6 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
-}
-
-.rounded {
-  border-radius: 0.25rem;
-}
-
-.rounded-full {
-  border-radius: 9999px;
 }
 
 .border {

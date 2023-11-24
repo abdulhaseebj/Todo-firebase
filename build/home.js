@@ -8,7 +8,6 @@ const input = document.querySelector('.todo-inp');
 const logout = document.querySelector('.logout');
 const userRen = document.querySelector('.user-ren');
 const render = document.querySelector('.render');
-const profileImage = document.querySelector('.profileImage');
 
 
 // user login or signup
@@ -20,8 +19,7 @@ onAuthStateChanged(auth, async (user) => {
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             console.log(doc.data());
-            userRen.innerHTML = doc.data().name
-            profileImage.src = doc.data().profileUrl
+            userRen.innerHTML = `${doc.data().name}`
         });
         getDataFromFirestore(uid);
     } else {
@@ -104,7 +102,26 @@ async function getDataFromFirestore(uid) {
     renderPost()
 }
 
+// add data on Firestore
+// form.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+//     console.log(input.value);
+//     try {
+//         const docRef = await addDoc(collection(db, "todo"), {
+//             uid: auth.currentUser.uid,
+//             todo: input.value,
+//         });
+//         console.log("Document written with ID: ", docRef.id);
 
+//         // Update local array and render after adding data
+//         arr.push({ uid: auth.currentUser.uid, todo: input.value, docId: docRef.id });
+//         renderPost();
+
+//     } catch (e) {
+//         console.error("Error adding document: ", e);
+//     }
+//     input.value = '';
+// });
 
 // add data on firstore
 
